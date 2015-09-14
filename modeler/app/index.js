@@ -109,6 +109,24 @@ $(document).on('ready', function() {
   var downloadLink = $('#js-download-diagram');
   var downloadSvgLink = $('#js-download-svg');
 
+
+  $('#js-setName').click(function(e) {
+    e.stopPropagation();
+    e.preventDefault();
+
+    renderer.invoke(function (elementRegistry, modeling)
+                                {
+                                    var newData = { name: 'blah' };
+                                    var e=elementRegistry.get('StartEvent_1');
+                                    modeling.updateProperties(e,
+                                        newData
+                                    );
+
+  });
+window.alert("Set Name");
+  });
+
+
   $('.buttons a').click(function(e) {
     if (!$(this).is('.active')) {
       e.preventDefault();
